@@ -201,3 +201,69 @@ States			Country			State
 Cascade Delete -> فعال است
 
 ------------------------------------------------------------------------------------
+
+Lazy Loading:
+
+(1):
+
+	Install-Package Microsoft.EntityFrameworkCore.Proxies
+
+		Microsoft.EntityFrameworkCore.Proxies
+
+			Castle.Core
+			Microsoft.EntityFrameworkCore
+
+(2):
+
+	protected override void OnConfiguring
+		(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder optionsBuilder)
+	{
+		//base.OnConfiguring(optionsBuilder);
+
+		string connectionString = "...";
+
+		optionsBuilder
+			.UseSqlServer(connectionString: connectionString)
+			.UseLazyLoadingProxies()
+			;
+		;
+	}
+
+(3):
+
+	Note: All navigation properties should have [virtual] keyword!
+	Note: All class contains navigation properties should have public or protected constructor!
+
+------------------------------------------------------------------------------------
+
+چه موقع برای رابطه (مثلا) یک به چند از عملیات رگلاژ استفاده می‌کنیم
+
+(1):
+
+زمانی که می‌خواهیم رفتار پیش‌فرض
+Cascade
+را تغییر دهیم
+
+(2):
+
+زمانی که از نام‌گذاری استانداردی استفاده نکرده باشیم
+
+	Role(s)									User(s)
+	----------------------------------------------------------
+	System.Guid Id							System.Guid Id
+											System.Guid RoleId
+	IList<User> Users						Role Role
+	----------------------------------------------------------
+
+	Role(s)									User(s)
+	----------------------------------------------------------
+	System.Guid Id							System.Guid Id
+											System.Guid Y
+	IList<User> X							Role Z
+	----------------------------------------------------------
+
+(3):
+
+زمانی که بیش از یک رابطه یک به چند بین دو مدل داریم
+
+------------------------------------------------------------------------------------

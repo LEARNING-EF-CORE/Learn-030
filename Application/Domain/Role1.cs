@@ -42,3 +42,22 @@
 //		// **********
 //	}
 //}
+
+//namespace Domain
+//{
+//	[Microsoft.EntityFrameworkCore.Index(propertyNames: nameof(Name), IsUnique = true)]
+//	public class Role1 : Base.Entity
+//	{
+//		public Role1() : base()
+//		{
+//		}
+
+//		// **********
+//		public string Name { get; set; }
+//		// **********
+
+//		// **********
+//		public virtual System.Collections.Generic.IList<User1> Users { get; set; }
+//		// **********
+//	}
+//}

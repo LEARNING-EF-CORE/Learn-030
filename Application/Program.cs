@@ -362,7 +362,7 @@ namespace Application
 					new Persistence.DatabaseContext();
 
 				var user =
-					databaseContext.Users1
+					databaseContext.Users3
 					.FirstOrDefault()
 					;
 
